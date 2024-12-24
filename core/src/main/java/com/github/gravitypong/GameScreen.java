@@ -1,9 +1,6 @@
 package com.github.gravitypong;
 
 import com.badlogic.gdx.*;
-import com.badlogic.gdx.assets.loaders.MusicLoader;
-import com.badlogic.gdx.assets.loaders.SoundLoader;
-import com.badlogic.gdx.assets.loaders.TextureLoader;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
@@ -17,7 +14,6 @@ import com.badlogic.gdx.utils.ScreenUtils;
 
 public class GameScreen implements Screen {
     final GravityPong game;
-    private boolean isEveryAssetSet = false;
 
     Texture backgroundTexture;
     Texture bucketTexture;
@@ -41,21 +37,6 @@ public class GameScreen implements Screen {
 
         this.game.assetManager.load("drop.mp3", Sound.class);
         this.game.assetManager.load("music.mp3", Music.class);
-
-        /*
-        backgroundTexture = new Texture("background.png");
-        bucketTexture = new Texture("bucket.png");
-        dropTexture = new Texture("drop.png");
-
-        dropSound = Gdx.audio.newSound(Gdx.files.internal("drop.mp3"));
-        music = Gdx.audio.newMusic(Gdx.files.internal("music.mp3"));
-        music.setLooping(true);
-        music.setVolume(0.01f);
-        music.play();
-
-        bucketSprite = new Sprite(bucketTexture); // Initialize the sprite based on the texture
-        bucketSprite.setSize(1, 1); // Define the size of the sprite
-         */
 
 
         touchPos = new Vector2();
@@ -93,20 +74,6 @@ public class GameScreen implements Screen {
             setAssets();
         }
 
-        /*
-        if (game.assetManager.update() && !game.assetManager.isFinished()) {
-            // loading finished
-            setAssets();
-        } else {
-            input();
-            logic();
-            draw();
-        }
-         */
-
-        //input();
-        //logic();
-        //draw();
     }
 
     private void setAssets() {
@@ -196,7 +163,15 @@ public class GameScreen implements Screen {
         game.batch.draw(backgroundTexture, 0, 0, game.viewport.getWorldWidth(), game.viewport.getWorldHeight()); // draw the background
         bucketSprite.draw(game.batch); // Sprites have their own draw method
 
-        for (Sprite dropSprite : dropSprites) {
+        /*  The iterator returned by iterator() of libGDX Array is always the same instance,
+            allowing the Array to be used with the enhanced for-each (for( : )) syntax without creating garbage.
+            Note however that this differs from most iterable collections!
+            It cannot be used in nested loops, else it will cause hard to find bugs.
+            Use the Array.ArrayIterator constructor for nested or multithreaded iteration.
+            https://libgdx.com/wiki/utils/collections
+            https://stackoverflow.com/questions/50237364/what-does-using-non-reentrant-iterator-method-array-iterator-error-message
+         */
+        for (Sprite dropSprite : new Array.ArrayIterator<>(dropSprites)) {
             dropSprite.draw(game.batch);
         }
 
@@ -218,8 +193,8 @@ public class GameScreen implements Screen {
     }
 
     /**
-     * @param width
-     * @param height
+     * @param width the new width in pixels
+     * @param height the new height in pixels
      * @see ApplicationListener#resize(int, int)
      */
     @Override
@@ -263,13 +238,6 @@ public class GameScreen implements Screen {
         game.assetManager.unload("drop.png");
         game.assetManager.unload("bucket.png");
 
-        /*
-        backgroundTexture.dispose();
-        dropSound.dispose();
-        music.dispose();
-        dropTexture.dispose();
-        bucketTexture.dispose();
-         */
         System.out.println("GameScreen disposed!"); // replace with logger
     }
 }

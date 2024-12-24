@@ -1,7 +1,6 @@
 package com.github.gravitypong;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.utils.ScreenUtils;
@@ -22,14 +21,6 @@ public class MainMenuScreen extends ScreenAdapter {
     public void resize(int width, int height) {
         // Resize your application here. The parameters represent the new window size.
         game.viewport.update(width, height, true); // true centers the camera
-    }
-
-    @Override
-    public void show() {
-    }
-
-    @Override
-    public void hide() {
     }
 
     @Override
