@@ -1,4 +1,4 @@
-package com.github.gravitypong;
+package com.github.bucketdrop;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
@@ -6,9 +6,9 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.utils.ScreenUtils;
 
 public class MainMenuScreen extends ScreenAdapter {
-    final GravityPong game;
+    final BucketDrop game;
 
-    public MainMenuScreen (GravityPong game) {
+    public MainMenuScreen (BucketDrop game) {
         this.game = game;
 
         this.game.font = this.game.assetManager.get("MinecraftiaFont.fnt");

@@ -1,4 +1,4 @@
-package com.github.gravitypong;
+package com.github.bucketdrop;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
@@ -7,7 +7,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 
-public class GravityPong extends Game {
+public class BucketDrop extends Game {
     public AssetManager assetManager = new AssetManager();
     public SpriteBatch batch;
     public BitmapFont font;
@@ -47,7 +47,7 @@ public class GravityPong extends Game {
         //font.dispose();
         assetManager.unload("MinecraftiaFont.fnt");
         gameScreen.dispose();
-        System.out.println("GravityPong disposed!"); // replace with logger
+        System.out.println("BucketDrop disposed!"); // replace with logger
     }
 
     public void setGameScreen(GameScreen gameScreen) {

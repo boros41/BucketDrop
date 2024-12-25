@@ -14,7 +14,7 @@
  */
 //Note, the above license and copyright applies to this file only.
 
-package com.github.gravitypong.lwjgl3;
+package com.github.bucketdrop.lwjgl3;
 
 import org.lwjgl.system.macosx.LibC;
 

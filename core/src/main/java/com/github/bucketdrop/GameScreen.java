@@ -1,4 +1,4 @@
-package com.github.gravitypong;
+package com.github.bucketdrop;
 
 import com.badlogic.gdx.*;
 import com.badlogic.gdx.audio.Music;
@@ -13,7 +13,7 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ScreenUtils;
 
 public class GameScreen implements Screen {
-    final GravityPong game;
+    final BucketDrop game;
 
     Texture backgroundTexture;
     Texture bucketTexture;
@@ -27,7 +27,7 @@ public class GameScreen implements Screen {
     Rectangle bucketRectangle;
     Rectangle dropRectangle;
 
-    public GameScreen(GravityPong game) {
+    public GameScreen(BucketDrop game) {
         // Prepare your application here.
         this.game = game;
 
@@ -46,7 +46,7 @@ public class GameScreen implements Screen {
         bucketRectangle = new Rectangle();
         dropRectangle = new Rectangle();
 
-        game.setGameScreen(this); // allows GravityPong to dispose this screen when needed
+        game.setGameScreen(this); // allows BucketDrop to dispose this screen when needed
     }
 
 
